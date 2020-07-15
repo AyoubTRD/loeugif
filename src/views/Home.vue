@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Loading v-if="loading" />
+    <Gifs v-else />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Gifs from "../components/Gifs";
+import Loading from "../components/Loading";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    Gifs,
+    Loading
+  },
+  computed: {
+    ...mapGetters(["loading"])
+  },
+  methods: {
+    ...mapActions(["getGifs"])
+  },
+  async created() {
+    console.log("Getting gifs");
+    await this.getGifs();
   }
-}
+};
 </script>

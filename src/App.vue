@@ -1,32 +1,57 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <Navbar />
+    <div class="container main-content">
+      <router-view />
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+import Navbar from "./components/Navbar";
+
+export default {
+  name: "App",
+  components: {
+    Navbar
+  }
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-#nav {
-  padding: 30px;
+body {
+  background-color: #efefef;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+button {
+  padding: 16px 25px;
+  border-radius: 4px;
+  border: none;
+  background: #e0e0e0;
+  border-top: 3px solid #efefef;
+  border-bottom: 3px solid #bbb;
+  color: #222;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.3s;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+button:focus {
+  transform: translateY(3px);
+}
+.container {
+  margin: 0 25px;
+}
+.main-content {
+  padding: 30px 25px;
+  border-radius: 7px;
+  border: 1px solid #aaa;
+  background: #fff;
 }
 </style>
